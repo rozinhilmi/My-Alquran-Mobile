@@ -20,6 +20,7 @@ class _DoaItemState extends State<DoaItem> {
         future: readJsonListDoa(),
         builder: (context,data){
           return  MaterialApp(
+            theme: isDark == true ? ThemeData.dark() : ThemeData.light(),
             home: Scaffold(
                 appBar: AppBar(
                   title: Row(

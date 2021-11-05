@@ -28,12 +28,13 @@ class _AsmaulHusnaState extends State<AsmaulHusna> {
                         // color: Colors.pink,
                         child: ListTile(
                           onTap: (){},
-                          title: Text(listAsmaulHusna[i]['latin'].toString()),
-                          subtitle: Text(listAsmaulHusna[i]['arti'].toString()),
+                          title: Text(listAsmaulHusna[i]['latin'].toString(),style: TextStyle(color: isDark == true? Colors.white : Colors.black)),
+                          subtitle: Text(listAsmaulHusna[i]['arti'].toString(),style: TextStyle(color: isDark == true? Colors.white : Colors.black)),
                           leading: CircleAvatar(
-                            child: Text(listAsmaulHusna[i]['urutan'].toString()),
+                            backgroundColor: isDark == true ? Colors.black.withOpacity(.5) : Colors.blue,
+                            child: Text(replaceFarsiNumber(listAsmaulHusna[i]['urutan'].toString()),style: TextStyle(color: Colors.white)),
                           ),
-                          trailing: Text(listAsmaulHusna[i]['arab'].toString()),
+                          trailing: Text(listAsmaulHusna[i]['arab'].toString(),style: TextStyle(color: isDark == true? Colors.white : Colors.black)),
                         ),
                       ),
                     // Text(listAsmaulHusna[i]["surat_name"])

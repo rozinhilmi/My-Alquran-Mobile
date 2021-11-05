@@ -22,26 +22,29 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 for(int i=0;i<(listSurah.length);i++)
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey,width: 0.3)
-                    ),
-                    // color: Colors.pink,
-                    child: ListTile(
-
-                      onTap: (){
-
-                        Navigator.push(context, Transition(Surat(listSurah[i]["id"])));
-                      },
-                      title: Text(listSurah[i]['surat_name'].toString()),
-                      subtitle: Text(listSurah[i]['surat_text'].toString()),
-                      leading: CircleAvatar(
-                        child: Text(listSurah[i]['id'].toString()),
+                  (listSurah[i]['surat_name'].toString().toLowerCase()).contains(alquranSearch.toLowerCase()) ?
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey,width: 0.3)
                       ),
-                      trailing: Text(listSurah[i]['count_ayat'].toString()+ " ayat")
-                    ),
-                  ),
+                      // color: Colors.pink,
+                      child: ListTile(
+
+                        onTap: (){
+
+                          Navigator.push(context, Transition(Surat(listSurah[i]["id"])));
+                        },
+                        title: Text(listSurah[i]['surat_name'].toString(),style: TextStyle(color: isDark == true? Colors.white : Colors.black),),
+                        subtitle: Text(listSurah[i]['surat_text'].toString(),style: TextStyle(color: isDark == true? Colors.white : Colors.black)),
+                        leading: CircleAvatar(
+                          backgroundColor: isDark == true ? Colors.black.withOpacity(.5) : Colors.blue,
+                          child: Text(replaceFarsiNumber(listSurah[i]['id'].toString()),style: TextStyle(color: Colors.white)),
+                        ),
+                        trailing: Text(listSurah[i]['count_ayat'].toString()+ " ayat",style: TextStyle(color: isDark == true? Colors.white : Colors.black))
+                      ),
+                    ) : Container()
+
                 // Text(listSurah[i]["surat_name"])
 
               ],

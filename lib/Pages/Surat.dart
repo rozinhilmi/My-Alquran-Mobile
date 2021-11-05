@@ -24,6 +24,7 @@ class _SuratState extends State<Surat> {
       future: readJsonSurahItem(widget.idSurah),
       builder: (context,data){
         return  MaterialApp(
+          theme: isDark == true ? ThemeData.dark() : ThemeData.light(),
           home: Scaffold(
             appBar: AppBar(
               title: Row(
@@ -40,6 +41,8 @@ class _SuratState extends State<Surat> {
               ),
             ),
             //
+
+
             body: ListView(
               children: [
                 for(int i=0; i<surah.length;i++)
@@ -63,10 +66,11 @@ class _SuratState extends State<Surat> {
                                   Text(surah[i]['aya_text'],textAlign: TextAlign.end,style: TextStyle(fontSize: 26)),
 
                                   CircleAvatar(
-                                    child: Text(surah[i]['aya_number'].toString()),
+                                    backgroundColor: isDark == true ? Colors.black.withOpacity(.5) : Colors.blue,
+                                    child: Text(replaceFarsiNumber(surah[i]['aya_number'].toString())),
                                   ),
                                   SizedBox(height: 7,),
-                                  Text(surah[i]["translation_aya_text"].toString(),textAlign: TextAlign.end,style: TextStyle(fontSize: 16),),
+                                  Text(surah[i]["translation_aya_text"].toString(),textAlign: TextAlign.start,style: TextStyle(fontSize: 16),),
                                 ],
                               )
                           ),

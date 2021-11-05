@@ -38,7 +38,7 @@ class _HalamanDoaState extends State<HalamanDoa> {
                             // print(i.toString());
                             Navigator.push(context, Transition(DoaItem(i)));
                           },
-                          title: Text(listDoa[i]['judul'].toString()),
+                          title: Text(listDoa[i]['judul'].toString(),style: TextStyle(color: isDark == true? Colors.white : Colors.black)),
                           // trailing: Text(listDoa[i]['footnote'].toString()),
                         ),
                       )
